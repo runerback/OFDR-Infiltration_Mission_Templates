@@ -1,0 +1,965 @@
+﻿<MissionEditor.Mission Version="0.60">
+  <MissionProperties AlternativeSetup2Description="" AlternativeSetup2Name="" AlternativeSetup1Description="" AlternativeSetup1Name="" AlternativeSetup0Description="" AlternativeSetup0Name="" DLCBitMask="0" InitialWeather="0" Time="01/01/2000 12:00:00" MultiplayerDescription="" MultiplayerAttackingArmy="0" MultiplayerModes="0" MultiplayerMaxServerBandwidth="2048" MultiplayerMaxPlayers="16" EnemyIntel="#ofp_missint_defaulte" FriendlyIntel="#ofp_missint_defaultf" Debriefing="#ofp_missdeb_default" DetailedBriefing="#ofp_missbrief_default" MultiplayerArenaSubdivisions="5, 5" MultiplayerArenaWarningSize="200" MultiplayerArenaSize="1500, 1500" MultiplayerArenaCenter="16000, -8000" MapImageSize="4000" MapImageCenter="16000, -8000" MissionImagePath="" Description="#ofp_missdesc_default" Group="Mission Editor" Name="#ofp_missname_default" />
+  <MarkerManager>
+    <MarkerAspectManagers></MarkerAspectManagers>
+    <Markers>
+      <Marker SerializationID="1" Name="Startup" TemplateID="64079280547853478" TemplateName="EntitySet" X="0" Y="0">
+        <EntityProperties ParentEntitySetID="0" Description="" />
+        <EntitySetProperties Active="True" Exportable="True" />
+      </Marker>
+      <Marker SerializationID="2" Name="levelScript" TemplateID="130338588799821875" TemplateName="levelScript" X="-27.09756" Y="-5396.972">
+        <EntityProperties ParentEntitySetID="1" Description="" />
+        <LuaScriptProperties ScriptName="level">
+          <Script>
+DEBUG = true
+DISPLAY = true
+logEdexToFile = false
+disableEdexTimer = false
+
+function onCreate()
+	OFP:setAIConfigPropertyValue("Medic.AllieCheckRadius", "60.f")
+	OFP:setAIConfigPropertyValue("Medic.MaximumHealDistancePlayer", "200.f")
+	OFP:setAIConfigPropertyValue("Medic.MaximumHealDistanceAI", "100.f")
+	OFP:setAIConfigPropertyValue("Medic.CreateNoHealingAreaOnCommandFailure", "true")
+	OFP:setAIConfigPropertyValue("Medic.NoHealingAreaRadius", "30.f")
+	OFP:setAIConfigPropertyValue("Medic.InitialNoHealingAreaCooldownTime", "2000")
+	OFP:setAIConfigPropertyValue("Medic.NoHealingAreaCooldownTime", "8000")
+	OFP:setAIConfigPropertyValue("Medic.MedicIntervalTime", "0")
+	OFP:setAIConfigPropertyValue("PathFinding.LandscapeHeuristicBias", "2.0")
+	OFP:setAIConfigPropertyValue("ConflictGroup.Overlap", "50")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_STATIC", "60")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_BOAT", "90")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_AIRCRAFT", "80")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_HELICOPTER", "110")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_HEAVYTRACK", "100")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_APCTRACK", "100")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_APCWHEEL", "100")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_ARMTRACK", "100")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_ARMWHEEL", "100")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_AMPHIBARMTRACK", "100")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_AMPHIBAPCTRACK", "100")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_AMPHIBARMWHEEL", "100")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_AMPHIBAPCWHEEL", "100")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_SOFTHUMVEE", "70")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_SOFTFUELTRUCK", "60")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_SOFTAMMOTRUCK", "60")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_SOFTTRUCK", "70")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_SOFTJEEP", "70")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_SFSNIPER", "10")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_SFAASPECIALIST", "10")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_SFMORTARGUNNER", "10")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_SFFWDOBSERVER", "10")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_SFENGINEER", "10")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_SFMEDIC", "10")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_SFGRENADIER", "10")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_SFMACHINEGUNNER", "10")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_SFRIFLEMAN", "10")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_SFLEADER", "10")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_JETPILOT", "3")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_DOORGUNNER", "3")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_HELICOPTERPILOT", "3")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_TRUCKCREW", "3")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_AFVCREWMAN", "3")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_AFVCOMMANDER", "3")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_FWDOBSERVER", "8")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_ENGINEER", "8")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_SNIPER", "8")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_JAVELINGUNNER", "8")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_AASPECIALIST", "8")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_MORTARGUNNER", "8")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_ATSPECIALIST", "8")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_MACHINEGUNNER", "7")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_MEDIC", "4")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_GRENADIER", "6")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_RIFLEMAN", "6")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_FTLEADER", "6")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_SQUADLEADER", "6")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_PLATOONLEADER", "6")
+	OFP:setAIConfigPropertyValue("Strength.UNIT_SENIOROFFICER", "6")
+	OFP:setAIConfigPropertyValue("WeaponUsage.Grenade.FragMaxRange", "50.0")
+	OFP:setAIConfigPropertyValue("WeaponUsage.Grenade.FragMinRange", "15.0")
+	OFP:setAIConfigPropertyValue("SoldierMedicSensor.RunAwayFailDistance", "60.0")
+	OFP:setAIConfigPropertyValue("Doctrine.Timeout", "90")
+	OFP:setAIConfigPropertyValue("TargetSensor.LongRangeDistance", "450.0")
+	OFP:setAIConfigPropertyValue("TargetSensor.MidRangeDistance", "100.0")
+	OFP:setAIConfigPropertyValue("Distances.EchelonShareSuspectedThreatRadius", "60.0")
+	OFP:setAIConfigPropertyValue("BodyController.TurnToLookHints", "true")
+	OFP:setAIConfigPropertyValue("HearingSensor.CriticalDetectionDistance", "30")
+	OFP:setAIConfigPropertyValue("HearingSensor.MaxRandomLookAtMilliseconds", "12000")
+	OFP:setAIConfigPropertyValue("HearingSensor.MinRandomLookAtMilliseconds", "8000")
+	OFP:setAIConfigPropertyValue("HearingSensor.ScoreCutoff", "2")
+	OFP:setAIConfigPropertyValue("HearingSensor.ScoreBaseMultiplier", "28")
+	OFP:setAIConfigPropertyValue("Feedback.EnemyDownFeedbackRequestPool", "16")
+	OFP:setAIConfigPropertyValue("Feedback.DecoratorRequestPool", "8")
+	OFP:setAIConfigPropertyValue("Feedback.GrenadeWarningFeedbackRequestPool", "4")
+	OFP:setAIConfigPropertyValue("Feedback.CorpseReportRequestPool", "4")
+	OFP:setAIConfigPropertyValue("Feedback.PlaceholderOffboardSupportRequestPool", "8")
+	OFP:setAIConfigPropertyValue("Feedback.HQOrderFeedbackRequestPool", "4")
+	OFP:setAIConfigPropertyValue("Feedback.VehicleTargetAcknowledgeFeedbackRequestPool", "8")
+	OFP:setAIConfigPropertyValue("Feedback.VehicleTargetOrderFeedbackRequestPool", "8")
+	OFP:setAIConfigPropertyValue("Feedback.TargetOrderFeedbackRequestPool", "8")
+	OFP:setAIConfigPropertyValue("Feedback.GenericOrderFeedbackRequestPool", "45")
+	OFP:setAIConfigPropertyValue("Feedback.GridRefOrderFeedbackRequestPool", "32")
+	OFP:setAIConfigPropertyValue("Feedback.ScriptSpeechRequestPool", "16")
+	OFP:setAIConfigPropertyValue("Feedback.TargetSpottedFeedbackRequestPool", "32")
+	OFP:setAIConfigPropertyValue("Feedback.SoldierDownFeedbackRequestPool", "8")
+	OFP:setAIConfigPropertyValue("Feedback.InjuryFeedbackRequestPool", "16")
+	OFP:setAIConfigPropertyValue("Feedback.SimpleFeedbackRequestPool", "32")
+	OFP:setAIConfigPropertyValue("Feedback.SpamRequestLifetimeMS", "500")
+	OFP:setAIConfigPropertyValue("Feedback.SpamRequestHistory", "30")
+	OFP:setAIConfigPropertyValue("Feedback.GrantedRequestLifetimeMS", "5000")
+	OFP:setAIConfigPropertyValue("Feedback.GrantedRequestHistory", "30")
+	OFP:setAIConfigPropertyValue("LineOfFireSensor.RangeLimitModifier", "1.0")
+	OFP:setAIConfigPropertyValue("LineOfFireSensor.LineOfFireObscuredTime", "5000")
+	OFP:setAIConfigPropertyValue("TargetSelectionController.UpdateInterval", "1000")
+	OFP:setAIConfigPropertyValue("TargetSelectionController.DangerZoneRadius", "30")
+	OFP:setAIConfigPropertyValue("TargetSelectionController.SuppressScoreValue", "400")
+	OFP:setAIConfigPropertyValue("TargetSelectionController.SwapScoreBuffer", "10")
+	OFP:setAIConfigPropertyValue("TargetSelectionController.RejectionThreshold", "-400")
+	OFP:setAIConfigPropertyValue("SightSensorModifiers.EStanding", "1.0")
+	OFP:setAIConfigPropertyValue("SightSensorModifiers.ECrouching", "0.85")
+	OFP:setAIConfigPropertyValue("SightSensorModifiers.EProne", "0.5")
+	OFP:setAIConfigPropertyValue("SightSensorModifiers.Boat", "3.0")
+	OFP:setAIConfigPropertyValue("SightSensorModifiers.Aircraft", "4.0")
+	OFP:setAIConfigPropertyValue("SightSensorModifiers.Helicopter", "4.0")
+	OFP:setAIConfigPropertyValue("SightSensorModifiers.HeavyTrackedVehicle", "3.0")
+	OFP:setAIConfigPropertyValue("SightSensorModifiers.APCTrack", "3.0")
+	OFP:setAIConfigPropertyValue("SightSensorModifiers.APCWheel", "3.0")
+	OFP:setAIConfigPropertyValue("SightSensorModifiers.AmphibArmouredTrack", "3.0")
+	OFP:setAIConfigPropertyValue("SightSensorModifiers.AmphibAPCTrack", "3.0")
+	OFP:setAIConfigPropertyValue("SightSensorModifiers.AmphibArmouredWheel", "3.0")
+	OFP:setAIConfigPropertyValue("SightSensorModifiers.AmphibAPCWheel", "3.0")
+	OFP:setAIConfigPropertyValue("SightSensorModifiers.SoftHumvee", "3.0")
+	OFP:setAIConfigPropertyValue("SightSensorModifiers.SoftFuelTruck", "3.0")
+	OFP:setAIConfigPropertyValue("SightSensorModifiers.SoftAmmoTruck", "3.0")
+	OFP:setAIConfigPropertyValue("SightSensorModifiers.SoftTruck", "3.0")
+	OFP:setAIConfigPropertyValue("SightSensorModifiers.SoftJeep", "3.0")
+	OFP:setAIConfigPropertyValue("DispersionAccuracy.Modifiers.Morale.NoMorale", "0.8")
+	OFP:setAIConfigPropertyValue("DispersionAccuracy.Modifiers.Morale.MoraleBroken", "0.6")
+	OFP:setAIConfigPropertyValue("DispersionAccuracy.Modifiers.Morale.MoraleBreaking", "0.5")
+	OFP:setAIConfigPropertyValue("DispersionAccuracy.Modifiers.Morale.MoraleFailing", "0.3")
+	OFP:setAIConfigPropertyValue("DispersionAccuracy.Modifiers.Morale.MoraleLowering", "0.2")
+	OFP:setAIConfigPropertyValue("DispersionAccuracy.Modifiers.Morale.FullMorale", "0.0")
+	OFP:setAIConfigPropertyValue("DispersionAccuracy.Modifiers.Suppression.Pinned", "1.0")
+	OFP:setAIConfigPropertyValue("DispersionAccuracy.Modifiers.Suppression.Suppressed", "0.8")
+	OFP:setAIConfigPropertyValue("DispersionAccuracy.Modifiers.Suppression.UnderFire", "0.4")
+	OFP:setAIConfigPropertyValue("DispersionAccuracy.Modifiers.Suppression.Unsuppressed", "0.0")
+	OFP:setAIConfigPropertyValue("DispersionAccuracy.Modifiers.Experience.Elite", "0.0")
+	OFP:setAIConfigPropertyValue("DispersionAccuracy.Modifiers.Experience.Veteran", "0.1")
+	OFP:setAIConfigPropertyValue("DispersionAccuracy.Modifiers.Experience.Regular", "0.2")
+	OFP:setAIConfigPropertyValue("DispersionAccuracy.Modifiers.Experience.Green", "0.3")
+	OFP:setAIConfigPropertyValue("DispersionAccuracy.Modifiers.AimingAtPlayer", "1.0")
+	OFP:setAIConfigPropertyValue("DispersionAccuracy.Modifiers.Base", "1.0")
+	OFP:setAIConfigPropertyValue("ROE.ReturnFireAllyDistCheck", "45")
+	OFP:setAIConfigPropertyValue("ROE.ReturnFireTime", "10000")
+	OFP:setAIConfigPropertyValue("Follow.DistMatchLeaderStance", "80.0")
+	OFP:setAIConfigPropertyValue("Command.followsimple.coverSearchRadius", "50.0")
+	OFP:setAIConfigPropertyValue("Command.followelement.coverSearchRadius", "50.0")
+	OFP:setAIConfigPropertyValue("Command.followformation.coverSearchRadius", "50.0")
+	OFP:setAIConfigPropertyValue("Command.assaultbuilding.moveCloserDistance", "70.0")
+	OFP:setAIConfigPropertyValue("Command.mount.moveCloserDistance", "70.0")
+	OFP:setAIConfigPropertyValue("Command.repair.moveCloserDistance", "70.0")
+	OFP:setAIConfigPropertyValue("Command.moveto.useCoverSearchRadiusAfterMoveTo", "false")
+	OFP:setAIConfigPropertyValue("Command.moveto.coverSearchRadius", "40.0")
+	OFP:setAIConfigPropertyValue("Command.suppress.useCoverSearchRadiusAfterMoveTo", "true")
+	OFP:setAIConfigPropertyValue("Command.suppress.coverSearchRadius", "10.0")
+	OFP:setAIConfigPropertyValue("Command.Default.moveCloserDistance", "120.0")
+	OFP:setAIConfigPropertyValue("Command.Default.useCoverSearchRadiusAfterMoveTo", "false")
+	OFP:setAIConfigPropertyValue("Command.Default.coverSearchRadius", "40.0")
+	OFP:setAIConfigPropertyValue("Bullet_Sensor.Vehicle.underFireThreshold", "15.0")
+	OFP:setAIConfigPropertyValue("Bullet_Sensor.Vehicle.underFireFadePPS", "1.5")
+	OFP:setAIConfigPropertyValue("Bullet_Sensor.Vehicle.underFireLimit", "40.0")
+	OFP:setAIConfigPropertyValue("Bullet_Sensor.Vehicle.underFireBase", "10.0")
+	OFP:setAIConfigPropertyValue("Bullet_Sensor.Soldier.underFireFadePPS", "12.5")
+	OFP:setAIConfigPropertyValue("Bullet_Sensor.Soldier.underFireMax", "60.0")
+	OFP:setAIConfigPropertyValue("Bullet_Sensor.Soldier.underFireValue", "15.0")
+	OFP:setAIConfigPropertyValue("Bullet_Sensor.Soldier.ceilingLimitAfterSuppression", "2.0")
+	OFP:setAIConfigPropertyValue("Bullet_Sensor.Soldier.suppressionFadePPS", "0.5")
+	OFP:setAIConfigPropertyValue("Bullet_Sensor.Soldier.pinnedOffTime", "2000")
+	OFP:setAIConfigPropertyValue("Bullet_Sensor.Soldier.pinnedOnTime", "12000")
+	OFP:setAIConfigPropertyValue("Bullet_Sensor.Soldier.unsuppressedLimit", "4.0")
+	OFP:setAIConfigPropertyValue("Bullet_Sensor.Soldier.suppressedLimit", "6.0")
+	OFP:setAIConfigPropertyValue("DetectionMeter.falloffDistance", "25")
+	OFP:setAIConfigPropertyValue("DetectionMeter.detectedThreshold", "7.5")
+	OFP:setAIConfigPropertyValue("DetectionMeter.suspectedThreshold", "0.1")
+	OFP:setAIConfigPropertyValue("DetectionMeter.maxValue", "18.75")
+	OFP:setAIConfigPropertyValue("DetectionMeter.valueIncrement", "7")
+	OFP:setAIConfigPropertyValue("SightSensor.Proximity.maxDist", "20")
+	OFP:setAIConfigPropertyValue("SightSensor.Proximity.maxSpeed", "4.0")
+	OFP:setAIConfigPropertyValue("SightSensor.Proximity.minSpeed", "2.5")
+	OFP:setAIConfigPropertyValue("SightSensor.Proximity.minDist", "5")
+	OFP:setAIConfigPropertyValue("SightSensor.Enhancement Modifiers.Thermal vision.raycastFilter", "1")
+	OFP:setAIConfigPropertyValue("SightSensor.Enhancement Modifiers.Thermal vision.Night", "1.0")
+	OFP:setAIConfigPropertyValue("SightSensor.Enhancement Modifiers.Thermal vision.Day", "1.0")
+	OFP:setAIConfigPropertyValue("SightSensor.Enhancement Modifiers.Night vision.Night", "0.6")
+	OFP:setAIConfigPropertyValue("SightSensor.Enhancement Modifiers.Night vision.Day", "0.8")
+	OFP:setAIConfigPropertyValue("SightSensor.Enhancement Modifiers.No filter.Night", "0.35")
+	OFP:setAIConfigPropertyValue("SightSensor.Enhancement Modifiers.No filter.Day", "1.0")
+	OFP:setAIConfigPropertyValue("SightSensor.Equipment Modifiers.Optical x10.peripheralAngleModifier", "0.0")
+	OFP:setAIConfigPropertyValue("SightSensor.Equipment Modifiers.Optical x10.peripheralRangeModifier", "0.0")
+	OFP:setAIConfigPropertyValue("SightSensor.Equipment Modifiers.Optical x10.centralAngleModifier", "0.5")
+	OFP:setAIConfigPropertyValue("SightSensor.Equipment Modifiers.Optical x10.centralRangeModifier", "3.5")
+	OFP:setAIConfigPropertyValue("SightSensor.Crew Modifiers.Gunner Unbuttoned.centralAngleModifier", "1.0")
+	OFP:setAIConfigPropertyValue("SightSensor.Crew Modifiers.Gunner Unbuttoned.centralRangeModifier", "1.0")
+	OFP:setAIConfigPropertyValue("SightSensor.Crew Modifiers.Gunner Unbuttoned.peripheralAngleModifier", "0.6")
+	OFP:setAIConfigPropertyValue("SightSensor.Crew Modifiers.Gunner Unbuttoned.peripheralRangeModifier", "1.0")
+	OFP:setAIConfigPropertyValue("SightSensor.Crew Modifiers.Driver Unbuttoned.centralAngleModifier", "1.0")
+	OFP:setAIConfigPropertyValue("SightSensor.Crew Modifiers.Driver Unbuttoned.centralRangeModifier", "1.0")
+	OFP:setAIConfigPropertyValue("SightSensor.Crew Modifiers.Driver Unbuttoned.peripheralAngleModifier", "0.6")
+	OFP:setAIConfigPropertyValue("SightSensor.Crew Modifiers.Driver Unbuttoned.peripheralRangeModifier", "1.0")
+	OFP:setAIConfigPropertyValue("SightSensor.Crew Modifiers.Commander Unbuttoned.centralAngleModifier", "1.0")
+	OFP:setAIConfigPropertyValue("SightSensor.Crew Modifiers.Commander Unbuttoned.centralRangeModifier", "1.0")
+	OFP:setAIConfigPropertyValue("SightSensor.Crew Modifiers.Commander Unbuttoned.peripheralAngleModifier", "1.0")
+	OFP:setAIConfigPropertyValue("SightSensor.Crew Modifiers.Commander Unbuttoned.peripheralRangeModifier", "1.0")
+	OFP:setAIConfigPropertyValue("SightSensor.Crew Modifiers.Gunner Buttoned.centralAngleModifier", "0.25")
+	OFP:setAIConfigPropertyValue("SightSensor.Crew Modifiers.Gunner Buttoned.centralRangeModifier", "4.0")
+	OFP:setAIConfigPropertyValue("SightSensor.Crew Modifiers.Gunner Buttoned.peripheralAngleModifier", "0.0")
+	OFP:setAIConfigPropertyValue("SightSensor.Crew Modifiers.Gunner Buttoned.peripheralRangeModifier", "0.0")
+	OFP:setAIConfigPropertyValue("SightSensor.Crew Modifiers.Driver Buttoned.centralAngleModifier", "0.5")
+	OFP:setAIConfigPropertyValue("SightSensor.Crew Modifiers.Driver Buttoned.centralRangeModifier", "0.65")
+	OFP:setAIConfigPropertyValue("SightSensor.Crew Modifiers.Driver Buttoned.peripheralAngleModifier", "0.25")
+	OFP:setAIConfigPropertyValue("SightSensor.Crew Modifiers.Driver Buttoned.peripheralRangeModifier", "0.65")
+	OFP:setAIConfigPropertyValue("SightSensor.Crew Modifiers.Commander Buttoned.centralAngleModifier", "0.5")
+	OFP:setAIConfigPropertyValue("SightSensor.Crew Modifiers.Commander Buttoned.centralRangeModifier", "2.0")
+	OFP:setAIConfigPropertyValue("SightSensor.Crew Modifiers.Commander Buttoned.peripheralAngleModifier", "0.25")
+	OFP:setAIConfigPropertyValue("SightSensor.Crew Modifiers.Commander Buttoned.peripheralRangeModifier", "0.25")
+	OFP:setAIConfigPropertyValue("SightSensor.Crew Modifiers.No modifier.centralAngleModifier", "1.0")
+	OFP:setAIConfigPropertyValue("SightSensor.Crew Modifiers.No modifier.centralRangeModifier", "1.0")
+	OFP:setAIConfigPropertyValue("SightSensor.Crew Modifiers.No modifier.peripheralAngleModifier", "1.0")
+	OFP:setAIConfigPropertyValue("SightSensor.Crew Modifiers.No modifier.peripheralRangeModifier", "1.0")
+	OFP:setAIConfigPropertyValue("SightSensor.outOfCombatReduction", "0.31")
+	OFP:setAIConfigPropertyValue("SightSensor.p_centralVisionAngle", "0.785398163")
+	OFP:setAIConfigPropertyValue("SightSensor.p_peripheralVisionAngle", "1.74532925")
+	OFP:setAIConfigPropertyValue("SightSensor.p_centralVisionDistance", "250")
+	OFP:setAIConfigPropertyValue("SightSensor.p_peripheralVisionDistance", "125")
+	OFP:setAIConfigPropertyValue("SightSensor.centralVisionAngle", "0.785398163")
+	OFP:setAIConfigPropertyValue("SightSensor.peripheralVisionAngle", "1.74532925")
+	OFP:setAIConfigPropertyValue("SightSensor.centralVisionDistance", "275")
+	OFP:setAIConfigPropertyValue("SightSensor.peripheralVisionDistance", "125")
+	OFP:setAIConfigPropertyValue("SightSensor.baseDetectionDistance", "150")
+	OFP:setAIConfigPropertyValue("SightSensor.NightStartHour", "21")
+	OFP:setAIConfigPropertyValue("SightSensor.DuskStartHour", "19")
+	OFP:setAIConfigPropertyValue("SightSensor.DayStartHour", "8")
+	OFP:setAIConfigPropertyValue("SightSensor.DawnStartHour", "4")
+	
+	OFP:setAIWeaponUsageFireRate("mw05auto30", "Normal", "Maximum", "3000")
+	OFP:setAIWeaponUsageFireRate("mw05auto30", "Normal", "Minimum", "2000")
+	OFP:setAIWeaponUsageFireRate("mw04autous25", "Normal", "Maximum", "3000")
+	OFP:setAIWeaponUsageFireRate("mw04autous25", "Normal", "Minimum", "2000")
+	OFP:setAIWeaponUsageFireRate("mw06chin30", "Normal", "Maximum", "4000")
+	OFP:setAIWeaponUsageFireRate("mw06chin30", "Normal", "Minimum", "3000")
+	OFP:setAIWeaponUsageFireRate("mw02gat20", "Normal", "Maximum", "5100")
+	OFP:setAIWeaponUsageFireRate("mw02gat20", "Normal", "Minimum", "4100")
+	OFP:setAIWeaponUsageFireRate("mw21mk19pintle", "Normal", "Maximum", "5000")
+	OFP:setAIWeaponUsageFireRate("mw21mk19pintle", "Normal", "Minimum", "2500")
+	OFP:setAIWeaponUsageFireRate("mw17mk19coax", "Normal", "Maximum", "5000")
+	OFP:setAIWeaponUsageFireRate("mw17mk19coax", "Normal", "Minimum", "2500")
+	OFP:setAIWeaponUsageFireRate("mw20lg3pintle", "Normal", "Maximum", "5000")
+	OFP:setAIWeaponUsageFireRate("mw20lg3pintle", "Normal", "Minimum", "2500")
+	OFP:setAIWeaponUsageFireRate("mw03autopla25", "Normal", "Maximum", "3000")
+	OFP:setAIWeaponUsageFireRate("mw03autopla25", "Normal", "Minimum", "2000")
+	OFP:setAIWeaponUsageFireRate("mw03aaa25", "Normal", "Maximum", "5100")
+	OFP:setAIWeaponUsageFireRate("mw03aaa25", "Normal", "Minimum", "4100")
+	OFP:setAIWeaponUsageFireRate("default", "Special", "Maximum", "35000")
+	OFP:setAIWeaponUsageFireRate("default", "Special", "Minimum", "25000")
+	OFP:setAIWeaponUsageFireRate("default", "Fast", "Maximum", "1800")
+	OFP:setAIWeaponUsageFireRate("default", "Fast", "Minimum", "800")
+	OFP:setAIWeaponUsageFireRate("default", "Normal", "Maximum", "5000")
+	OFP:setAIWeaponUsageFireRate("default", "Normal", "Minimum", "3000")
+	OFP:setAIWeaponUsageFireRate("default", "Slow", "Maximum", "7000")
+	OFP:setAIWeaponUsageFireRate("default", "Slow", "Minimum", "4000")
+	
+	OFP:setAIWeaponUsageBurstLength("mw05auto30", "Normal", "Maximum", "1800")
+	OFP:setAIWeaponUsageBurstLength("mw05auto30", "Normal", "Minimum", "600")
+	OFP:setAIWeaponUsageBurstLength("mw04autous25", "Normal", "Maximum", "1800")
+	OFP:setAIWeaponUsageBurstLength("mw04autous25", "Normal", "Minimum", "600")
+	OFP:setAIWeaponUsageBurstLength("mw06chin30", "Normal", "Maximum", "2000")
+	OFP:setAIWeaponUsageBurstLength("mw06chin30", "Normal", "Minimum", "1000")
+	OFP:setAIWeaponUsageBurstLength("mw02gat20", "Normal", "Maximum", "4000")
+	OFP:setAIWeaponUsageBurstLength("mw02gat20", "Normal", "Minimum", "2500")
+	OFP:setAIWeaponUsageBurstLength("mw21mk19pintle", "Normal", "Maximum", "1200")
+	OFP:setAIWeaponUsageBurstLength("mw21mk19pintle", "Normal", "Minimum", "300")
+	OFP:setAIWeaponUsageBurstLength("mw17mk19coax", "Normal", "Maximum", "1200")
+	OFP:setAIWeaponUsageBurstLength("mw17mk19coax", "Normal", "Minimum", "300")
+	OFP:setAIWeaponUsageBurstLength("mw20lg3pintle", "Normal", "Maximum", "900")
+	OFP:setAIWeaponUsageBurstLength("mw20lg3pintle", "Normal", "Minimum", "300")
+	OFP:setAIWeaponUsageBurstLength("mw03autopla25", "Normal", "Maximum", "1800")
+	OFP:setAIWeaponUsageBurstLength("mw03autopla25", "Normal", "Minimum", "600")
+	OFP:setAIWeaponUsageBurstLength("mw03aaa25", "Normal", "Maximum", "4000")
+	OFP:setAIWeaponUsageBurstLength("mw03aaa25", "Normal", "Minimum", "2500")
+	OFP:setAIWeaponUsageBurstLength("default", "Long", "Maximum", "5000")
+	OFP:setAIWeaponUsageBurstLength("default", "Long", "Minimum", "4000")
+	OFP:setAIWeaponUsageBurstLength("default", "Normal", "Maximum", "3600")
+	OFP:setAIWeaponUsageBurstLength("default", "Normal", "Minimum", "2400")
+	OFP:setAIWeaponUsageBurstLength("default", "Short", "Maximum", "1400")
+	OFP:setAIWeaponUsageBurstLength("default", "Short", "Minimum", "800")
+	
+	OFP:setAIWeaponUsageDispersionRadius("default", "SnapShot", "0.95")
+	OFP:setAIWeaponUsageDispersionRadius("default", "NormalShot", "0.4")
+	OFP:setAIWeaponUsageDispersionRadius("default", "AimedShot", "0.13")
+	
+	OFP:setAIDispersionSystemPropertyValue("SHOW_DEBUG", "0.0")
+	OFP:setAIDispersionSystemPropertyValue("AI_MAX_AIM_OFFSET_ANGLE", "7.0f")
+	OFP:setAIDispersionSystemPropertyValue("AI_MIN_GROUPING", "0.7f")
+	OFP:setAIDispersionSystemPropertyValue("AI_DR_BLOCK_PLAYER_FT_MOD", "0.8")
+	OFP:setAIDispersionSystemPropertyValue("AI_DR_BLOCK_SCALE_FACTOR", "0.5")
+	OFP:setAIDispersionSystemPropertyValue("AI_DR_BLOCK_RADIUS", "1.4")
+	OFP:setAIDispersionSystemPropertyValue("AI_DR_BLOCK_MIN_RANGE_OUTER", "35.0")
+	OFP:setAIDispersionSystemPropertyValue("AI_DR_BLOCK_MIN_RANGE_INNER", "5.0")
+	OFP:setAIDispersionSystemPropertyValue("AI_AIMING_PLAYER_MODIFIER", "0.0")
+	OFP:setAIDispersionSystemPropertyValue("ELEVATION_HANDLING_SCALE", "0.05")
+	OFP:setAIDispersionSystemPropertyValue("TURN_HANDLING_SCALE", "0.5")
+	OFP:setAIDispersionSystemPropertyValue("GLOBAL_HANDLING_SCALE", "1.0")
+	OFP:setAIDispersionSystemPropertyValue("MAX_RECOIL_RATIO", "5.0")
+	OFP:setAIDispersionSystemPropertyValue("MAX_TO_BASE_RATIO", "30.0")
+	OFP:setAIDispersionSystemPropertyValue("STANCE_PRONE_DEGREDATION", "0.5")
+	OFP:setAIDispersionSystemPropertyValue("STANCE_PRONE_IMPROVEMENT", "1.5")
+	OFP:setAIDispersionSystemPropertyValue("STANCE_PRONE_MODIFIER", "3.0")
+	OFP:setAIDispersionSystemPropertyValue("STANCE_CROUCH_DEGREDATION", "0.75")
+	OFP:setAIDispersionSystemPropertyValue("STANCE_CROUCH_IMPROVEMENT", "1.25")
+	OFP:setAIDispersionSystemPropertyValue("STANCE_CROUCH_MODIFIER", "3.0")
+	OFP:setAIDispersionSystemPropertyValue("STANCE_STAND_DEGREDATION", "1.0")
+	OFP:setAIDispersionSystemPropertyValue("STANCE_STAND_IMPROVEMENT", "1.0")
+	OFP:setAIDispersionSystemPropertyValue("STANCE_STAND_MODIFIER", "3.0")
+	OFP:setAIDispersionSystemPropertyValue("FATIGUE_MODIFIER", "1.0")
+	OFP:setAIDispersionSystemPropertyValue("FATIGUE_THRESHOLD", "1.0")
+	OFP:setAIDispersionSystemPropertyValue("UNAIMED_MODIFIER", "3.0")
+	OFP:setAIDispersionSystemPropertyValue("AIMED_MODIFIER", "0.7")
+	OFP:setAIDispersionSystemPropertyValue("SPEED_JOGGING_MODIFIER", "1.5")
+	OFP:setAIDispersionSystemPropertyValue("SPEED_WALKING_MODIFIER", "1.2")
+	OFP:setAIDispersionSystemPropertyValue("SPEED_SHUFFLE_MODIFIER", "1.1")
+	OFP:setAIDispersionSystemPropertyValue("SPEED_IDLE_MODIFIER", "1.0")
+	OFP:setAIDispersionSystemPropertyValue("INJURY_MAJOR_AIM_LOSS", "1.9")
+	OFP:setAIDispersionSystemPropertyValue("INJURY_MINOR_AIM_LOSS", "1.3")
+	OFP:setAIDispersionSystemPropertyValue("SKILL_IMPROVEMENT_EXPERT_FACTOR", "0.3")
+	OFP:setAIDispersionSystemPropertyValue("SKILL_IMPROVEMENT_ADVANCED_FACTOR", "0.5")
+	OFP:setAIDispersionSystemPropertyValue("SKILL_IMPROVEMENT_BASIC_FACTOR", "0.8")
+	OFP:setAIDispersionSystemPropertyValue("SKILL_IMPROVEMENT_UNTRAINED_FACTOR", "1.0")
+	OFP:setAIDispersionSystemPropertyValue("SKILL_GRADE_EXPERT_FACTOR", "1.0")
+	OFP:setAIDispersionSystemPropertyValue("SKILL_GRADE_ADVANCED_FACTOR", "1.0")
+	OFP:setAIDispersionSystemPropertyValue("SKILL_GRADE_BASIC_FACTOR", "1.0")
+	OFP:setAIDispersionSystemPropertyValue("SKILL_GRADE_UNTRAINED_FACTOR", "1.0")
+	OFP:setAIDispersionSystemPropertyValue("BASE_IMPROVEMENT", "0.25")
+	OFP:setAIDispersionSystemPropertyValue("BASE_DISPERSION_MODIFIER", "1.0")
+	
+	OFP:setAIDispersionSystemDRBlock("WEAPON_TYPE_SNIPER_RIFLE", 50.0, 0.0, 4, 20, 30.0, 25.0, 0.0, 4, 10)
+	OFP:setAIDispersionSystemDRBlock("WEAPON_TYPE_MACHINE_GUN", 50.0, 0.0, 4, 20, 40.0, 25.0, 0.0, 4, 10)
+	OFP:setAIDispersionSystemDRBlock("WEAPON_TYPE_ASSAULT_RIFLE", 50.0, 0.0, 4, 20, 40.0, 25.0, 0.0, 4, 10)
+	OFP:setAIDispersionSystemDRBlock("WEAPON_TYPE_SUBMACHINE_GUN", 50.0, 0.0, 4, 20, 40.0, 25.0, 0.0, 4, 10)
+	
+	OFP:setAIDispersionSystemAimOffset("WEAPON_TYPE_SHOULDER_LAUNCHED_JAV", "vsAI", 0.2, 120, 0.6, 1.8, 6, 18)
+	OFP:setAIDispersionSystemAimOffset("WEAPON_TYPE_SHOULDER_LAUNCHED_JAV", "vsPlayer", 0.2, 120, 0.6, 1.8, 6, 18)
+	OFP:setAIDispersionSystemAimOffset("WEAPON_TYPE_SHOULDER_LAUNCHED_GENERAL", "vsAI", 0.2, 120, 0.6, 1.8, 6, 18)
+	OFP:setAIDispersionSystemAimOffset("WEAPON_TYPE_SHOULDER_LAUNCHED_GENERAL", "vsPlayer", 0.2, 120, 0.6, 1.8, 6, 18)
+	OFP:setAIDispersionSystemAimOffset("WEAPON_TYPE_ROCKET_POD", "vsAI", 1.0, 360, 0.9, 2.0, 1, 19)
+	OFP:setAIDispersionSystemAimOffset("WEAPON_TYPE_ROCKET_POD", "vsPlayer", 1.0, 360, 0.9, 2.0, 8, 17)
+	OFP:setAIDispersionSystemAimOffset("WEAPON_TYPE_AUTOCANNON", "vsHelicopter", 1.0, 360, 1.5, 7.5, 1, 19)
+	OFP:setAIDispersionSystemAimOffset("WEAPON_TYPE_AUTOCANNON", "vsAI", 1.0, 160, 1, 2, 1, 19)
+	OFP:setAIDispersionSystemAimOffset("WEAPON_TYPE_AUTOCANNON", "vsPlayer", 1.0, 120, 1, 2, 8, 17)
+	OFP:setAIDispersionSystemAimOffset("WEAPON_TYPE_CHAIN_GUN", "vsHelicopter", 1.0, 360, 1, 5, 1, 19)
+	OFP:setAIDispersionSystemAimOffset("WEAPON_TYPE_CHAIN_GUN", "vsAI", 1.0, 160, 0.9, 3.6, 1, 19)
+	OFP:setAIDispersionSystemAimOffset("WEAPON_TYPE_CHAIN_GUN", "vsPlayer", 1.0, 120, 0.9, 3.6, 8, 17)
+	OFP:setAIDispersionSystemAimOffset("WEAPON_TYPE_MOUNTED_GREN_LAUNCHER", "vsAI", 0.1, 160, 0.5, 2, 2, 13)
+	OFP:setAIDispersionSystemAimOffset("WEAPON_TYPE_MOUNTED_GREN_LAUNCHER", "vsPlayer", 0.1, 120, 1, 3, 3, 17)
+	OFP:setAIDispersionSystemAimOffset("WEAPON_TYPE_GRENADE_LAUNCHER", "vsAI", 0.1, 120, 0.5, 2, 2, 13)
+	OFP:setAIDispersionSystemAimOffset("WEAPON_TYPE_GRENADE_LAUNCHER", "vsPlayer", 0.1, 90, 1, 3, 3, 17)
+	OFP:setAIDispersionSystemAimOffset("WEAPON_TYPE_TANK_CANNON", "vsAI", 0.2, 160, 0, 1.15, 3, 7)
+	OFP:setAIDispersionSystemAimOffset("WEAPON_TYPE_TANK_CANNON", "vsPlayer", 0.2, 160, 0, 1.15, 5, 10)
+	
+	REGISTERED = true
+end</Script>
+        </LuaScriptProperties>
+      </Marker>
+      <Marker SerializationID="3" Name="missionScript" TemplateID="59584148284663864" TemplateName="secondaryScript" X="-79.80197" Y="-2834.708">
+        <EntityProperties ParentEntitySetID="1" Description="" />
+        <LuaScriptProperties ScriptName="mission">
+          <Script>SCRIPT_NAME = "mission"
+
+--[[
+load next scene with parameter determin whether dispose scene when scene's end attached:
+	[disposeWhenEnd] true: dispose scene when end		false: keep scene when end
+	EDX["scenesManager"].LoadNextScene(disposeWhenEnd)
+set stop point in path and time:
+	EDX["patrolSystem"].registerHoldTime("waypointName", holdTime)
+patrol:
+	[patrolType] 0: circle		1: forwardback		other:once
+	EDX["patrolSystem"].patrol("echelonOrGroupName", "pathName", patrolType)
+]]
+		  
+		  
+function onEDXInitialized()
+	scripts.mission.waypoints.registerFunction("onIdle")
+	scripts.mission.waypoints.registerFunction("onCompleted")
+
+	data = EDX["dataManager"].GetOrCreate(SCRIPT_NAME)
+	if EDX["dataManager"].IsFirstRun() == true then
+		EDX:registerPlayer("iu36plsfrfl") --type main player name here
+		EDX:registerPlayable("", false)
+		
+		EDX["scenesManager"].RegisterScenes({ --type scene Id list here
+			
+		})
+	end
+	
+	OFP:blockCommandAndReportFeedback(true)
+end
+
+function onMissionStart()
+	EDX:setTimeOfDay(01, 00, 00)
+	--EDX:setRandomTime()
+	EDX:setWeatherCurrent(4)
+	EDX:setFogCurrent(36)
+	--EDX:setRandomWeather()
+	--EDX:randomizeWeather(30)
+	
+	if not scripts.mission.level or not scripts.mission.level.REGISTERED then
+		OFP:showPopup("\232\132\154\230\156\172\230\149\176\230\141\174\233\148\153\232\175\175", "\232\175\183\233\135\141\230\150\176\228\184\139\232\189\189\228\187\187\229\138\161")
+		OFP:missionCompleted()
+	end
+end
+
+----------------------ScenesManager callback start--------------------
+
+function onIdle(nextSceneId)
+	if nextSceneId == "" then
+		
+	end
+end
+
+function onCompleted(missionFinishedCount)
+	if missionFinishedCount &lt; 1 then
+		OFP:missionFailed()
+	else
+		EDX:simpleTimer("onMissionCompleted", 3600)
+	end
+end
+
+----------------------ScenesManager callback end----------------------
+
+---------------------------------------------------------------------
+
+function onMissionCompleted(timerId)
+	OFP:missionCompleted()
+end
+
+---------------------------------------------------------------------
+
+</Script>
+        </LuaScriptProperties>
+      </Marker>
+      <Marker SerializationID="4" Name="sceneBase" TemplateID="59584148284663864" TemplateName="secondaryScript" X="2257.158" Y="-4955.557">
+        <EntityProperties ParentEntitySetID="1" Description="" />
+        <LuaScriptProperties ScriptName="sceneBase">
+          <Script>SCRIPT_NAME="sceneBase"
+
+onEDXInitialized = function()
+	scripts.mission.waypoints.registerFunction("Initialize")
+	scripts.mission.waypoints.registerFunction("Dispose")
+	scripts.mission.waypoints.registerFunction("GetMainObjective")
+	scripts.mission.waypoints.registerFunction("GetSubObjective")
+	scripts.mission.waypoints.registerFunction("raiseInitialized")
+	scripts.mission.waypoints.registerFunction("raiseDisposed")
+	scripts.mission.waypoints.registerFunction("raiseSpotted")
+	scripts.mission.waypoints.registerFunction("raiseTargetEscaped")
+	
+	data = EDX["dataManager"].GetOrCreate(SCRIPT_NAME)
+	if EDX["dataManager"].IsFirstRun() == true then
+		data["sceneId"] = -1
+	end
+end
+
+Initialize = function(sceneId)
+	data["sceneId"] = sceneId
+	
+	EDX[sceneId].initialize()
+end
+
+raiseInitialized = function(target)
+	local mainObjective = GetMainObjective(data["sceneId"])
+	OFP:setObjectiveState(mainObjective, "IN_PROGRESS")
+	OFP:setObjectiveVisibility(mainObjective, "true")
+	
+	local subObjective = GetSubObjective(data["sceneId"])
+	OFP:setObjectiveState(subObjective, "IN_PROGRESS")
+
+	EDX["scenesManager"].onSceneInitialized(target) --in scenesManager
+end
+
+Dispose = function(sceneId)
+	data["sceneId"] = sceneId
+	
+	EDX[sceneId].dispose()
+end
+
+raiseDisposed = function()
+	local subObjective = GetSubObjective(data["sceneId"])
+	if OFP:getObjectiveState(subObjective) ~= "IN_PROGRESS" then
+		OFP:setObjectiveVisibility(subObjective, "true")
+	end
+	
+	EDX["scenesManager"].onSceneDisposed() --in scenesManager
+end
+
+raiseTargetEscaped = function() --to scene manager
+	EDX["scenesManager"].onTargetEscaped()
+end
+
+raiseSpotted = function(sceneId) --to current scene
+	EDX[sceneId].onSpotted()
+end
+
+GetMainObjective = function(sceneId)
+	return EDX[sceneId].getMainObjective()
+end
+
+GetSubObjective = function(sceneId)
+	return EDX[sceneId].getSubObjective()
+end
+</Script>
+        </LuaScriptProperties>
+      </Marker>
+      <Marker SerializationID="5" Name="scenesManager" TemplateID="59584148284663864" TemplateName="secondaryScript" X="1288.204" Y="-5702.923">
+        <EntityProperties ParentEntitySetID="1" Description="" />
+        <LuaScriptProperties ScriptName="scenesManager">
+          <Script>SCRIPT_NAME="scenesManager"
+
+onEDXInitialized = function()
+	scripts.mission.waypoints.registerFunction("RegisterScenes")
+	scripts.mission.waypoints.registerFunction("onSceneInitialized")
+	scripts.mission.waypoints.registerFunction("onSceneDisposed")
+	scripts.mission.waypoints.registerFunction("onTargetEscaped")
+	scripts.mission.waypoints.registerFunction("LoadNextScene")
+	scripts.mission.waypoints.registerFunction("GetTarget")
+	
+	data = EDX["dataManager"].GetOrCreate(SCRIPT_NAME)
+	if EDX["dataManager"].IsFirstRun() == true then
+		
+		data["isCheckingEnabled"] = false
+		data["target"] = ""
+		data["suspectedCount"] = 0
+		
+		data["scenes"] = {}
+		data["maxScenesCount"] = 3
+		data["currentSceneIndex"] = 0 --base on 1
+		data["currentSceneId"] = ""
+		
+		data["mainMissionFinished"] = false
+		data["subMissionFailed"] = false
+		data["allPlayersDead"] = false
+		
+		data["missionFinishedCount"] = 0
+		
+		data["disposeWhenEnd"] = true
+		
+		data["attacker"] = ""
+	end
+end
+
+onMissionStart = function()
+	data["attacker"] = EDX:getPrimaryPlayer()
+	
+	moveToNextScene()
+end
+
+registerScene = function(sceneId)
+	table.insert(data["scenes"], sceneId)
+end
+
+RegisterScenes = function(sceneIdList)
+	local i = 0
+	for _, v in pairs(sceneIdList) do
+		if data["maxScenesCount"] &lt;= i then
+			break
+		end
+		registerScene(v)
+		i = i + 1
+	end
+end
+
+moveToNextScene = function()
+	local currentSceneIndex = data["currentSceneIndex"] + 1
+	if currentSceneIndex &lt;= #data["scenes"] then
+		data["currentSceneIndex"] = currentSceneIndex
+		local sceneId = data["scenes"][currentSceneIndex]
+		
+		data["currentSceneId"] = sceneId
+		
+		EDX["mission"].onIdle(sceneId)
+	else
+		EDX["mission"].onCompleted(data["missionFinishedCount"])
+	end
+end
+
+LoadNextScene = function(disposeWhenEnd)
+	data["disposeWhenEnd"] = disposeWhenEnd
+	initializeScene(data["currentSceneId"])
+end
+
+initializeScene = function(sceneId)
+	OFP:allowPlayerFire(false)
+	OFP:allowPlayerMovement(false)
+	OFP:showLetterBoxOsd(true)
+	
+	EDX["sceneBase"].Initialize(sceneId)
+end
+
+onSceneInitialized = function(target)
+	data["target"] = string.lower(target)
+	data["isCheckingEnabled"] = true
+	
+	OFP:allowPlayerFire(true)
+	OFP:allowPlayerMovement(true)
+	OFP:showLetterBoxOsd(false)
+end
+
+disposeScene = function(sceneIndex)
+	local sceneId = data["scenes"][sceneIndex]
+	
+	local mainObjective = EDX["sceneBase"].GetMainObjective(sceneId)
+	if data["mainMissionFinished"] == true then
+		if OFP:getObjectiveState(mainObjective) ~= "COMPLETED" then
+			OFP:setObjectiveState(mainObjective, "COMPLETED")
+		end
+		data["missionFinishedCount"] = data["missionFinishedCount"] + 1
+	else
+		OFP:setObjectiveState(mainObjective, "FAILED")
+	end
+	
+	local subObjective =EDX["sceneBase"].GetSubObjective(sceneId)
+	if data["mainMissionFinished"] == true then
+		if OFP:getObjectiveState(subObjective) ~= "FAILED" then
+			OFP:setObjectiveState(subObjective, "COMPLETED")
+			OFP:setObjectiveVisibility(subObjective, "true")
+		end
+	end
+	
+	OFP:allowPlayerFire(false)
+	OFP:allowPlayerMovement(false)
+	
+	if data["disposeWhenEnd"] == true then
+		EDX["sceneBase"].Dispose(sceneId)
+	else
+		onSceneDisposed()
+	end
+end
+
+onSceneDisposed = function()
+	if data["allPlayersDead"]==true then
+		OFP:missionFailedKIA()
+	else
+		data["isCheckingEnabled"] = false
+		data["target"] = null
+		data["suspectedCount"] = 0
+		data["mainMissionFinished"] = false
+		data["subMissionFailed"] = false
+		
+		OFP:allowPlayerFire(true)
+		OFP:allowPlayerMovement(true)
+		OFP:showLetterBoxOsd(false)
+		
+		moveToNextScene()
+	end
+end
+
+onTargetEliminated = function(target)
+	data["mainMissionFinished"] = true
+	
+	if OFP:getStance(target) == "EProne" then
+		endCurrentScene()
+	elseif OFP:getDistance(EDX:getPrimaryPlayer(), target) &lt; 100 then
+		endCurrentScene()
+	else
+		EDX:simpleTimer("cameraToTarget", 100)
+	end
+end
+
+cameraToTarget = function(timerId)
+	EDX:deleteTimer("cameraToTarget")
+	
+	OFP:showLetterBoxOsd(true)
+	OFP:selectCamera(data["target"])
+	
+	EDX:simpleTimer("cameraToPlayer", 1600)
+end
+
+cameraToPlayer = function(timerId)
+	EDX:deleteTimer("cameraToPlayer")
+	
+	OFP:selectCamera(data["attacker"])
+	endCurrentScene()
+end
+
+endCurrentScene = function()
+	--[[
+	OFP:displaySystemMessage(" ")
+	OFP:displaySystemMessage(" ")
+	OFP:displaySystemMessage(" ")
+	OFP:displaySystemMessage(" ")
+	OFP:displaySystemMessage(" ")
+	--]]
+	
+	disposeScene(data["currentSceneIndex"])
+end
+
+onSubMissionFailed = function()
+	local currentSceneIndex = data["currentSceneIndex"]
+	local sceneId = data["scenes"][currentSceneIndex]
+	
+	local subObjective = EDX["sceneBase"].GetSubObjective(sceneId)
+	OFP:setObjectiveState(subObjective, "FAILED")
+	OFP:setObjectiveVisibility(subObjective, "true")
+	
+	EDX["sceneBase"].raiseSpotted(sceneId)
+end
+
+onTargetEscaped = function()
+	data["mainMissionFinished"] = false
+	endCurrentScene()
+end
+
+GetTarget = function()
+	return data["target"]
+end
+
+-------------------Origin Events Start-------------------
+onSuspected = function(victim, suspector)
+	if data["isCheckingEnabled"] == true and data["subMissionFailed"] == false then
+		if victim == data["attacker"] then
+			data["suspectedCount"] = data["suspectedCount"] + 1
+			
+			if data["suspectedCount"] &gt;= 6 then
+				local echelon = OFP:getParentEchelon(suspector)
+				OFP:setDoctrine(echelon, "ECombat", "addtofront")
+			elseif data["suspectedCount"] &gt;= 2 then
+				local echelon = OFP:getParentEchelon(suspector)
+				OFP:setDoctrine(echelon, "EAware", "addtofront")
+			end
+			
+			OFP:displaySystemMessage("\230\149\140\230\150\185\232\173\166\232\167\137\230\172\161\230\149\176\239\188\154 "..data["suspectedCount"])
+		end
+	end
+end
+
+onIdentified = function(victim, identifier)
+	if data["isCheckingEnabled"] == true and data["subMissionFailed"] == false then
+		if victim == data["attacker"] then
+			OFP:displaySystemMessage("\228\189\160\229\183\178\231\187\143\230\154\180\233\156\178\228\186\134\239\188\129")
+			
+			data["subMissionFailed"] = true
+			
+			local x,y,z = OFP:getPosition(identifier)
+			OFP:playOneShotSound("flashpoint2", "Placeable", "SPC3_Alarm", x, y, z, 100, 36, 0)
+			
+			onSubMissionFailed()
+		end
+	end
+end
+
+onDeath = function(victim)
+	if string.lower(victim) == data["target"] then
+		onTargetEliminated(victim)
+	end
+end
+
+onMount = function(vehicleName, unitName)
+	if unitName == data["attacker"] then
+		data["attacker"] = vehicleName
+	end
+end
+
+onDismount = function(vehicleName, unitName)
+	if vehicleName == data["attacker"] then
+		data["attacker"] = unitName
+	end
+end
+
+onAllPlayersDead = function()
+	data["allPlayersDead"] = true
+	endCurrentScene()
+end
+
+--------------------Origin Events End-------------------</Script>
+        </LuaScriptProperties>
+      </Marker>
+      <Marker SerializationID="6" Name="dataManager" TemplateID="59584148284663864" TemplateName="secondaryScript" X="2506.544" Y="-3423.126">
+        <EntityProperties ParentEntitySetID="1" Description="" />
+        <LuaScriptProperties ScriptName="dataManager">
+          <Script>SCRIPT_NAME = "dataManager"
+
+onEDXInitialized = function()
+	scripts.mission.waypoints.registerFunction("IsFirstRun")
+	scripts.mission.waypoints.registerFunction("AddOrUpdate")
+	scripts.mission.waypoints.registerFunction("GetOrCreate")
+	scripts.mission.waypoints.registerFunction("Save")
+	
+	if not data then
+		data = {}
+		data["_path"] = "./data_win/missions/kmp/cache"
+		data["_firstrun"] = true
+	else
+		load()
+	end
+end
+
+onMissionStart = function()
+	data["_firstrun"] = false
+end
+
+IsFirstRun = function()
+	return data["_firstrun"]
+end
+
+AddOrUpdate = function(name, value)
+	if name == "_path" or name == "_fistrun" then
+		OFP:displaySystemMessage("debug: cannot use system name as data name")
+		return
+	end
+	data[name] = value
+end
+
+GetOrCreate = function(name)
+	if name == "_path" or name == "_fistrun" then
+		OFP:displaySystemMessage("debug: cannot use system name as data name")
+		return nil
+	end
+	
+	if not data[name] then
+		data[name] = {}
+	end
+	return data[name]
+end
+
+Save = function()
+	EDX:saveTable(data, "data", data["_path"])
+end
+
+load = function()
+	EDX:loadTable(data["_path"])
+end
+</Script>
+        </LuaScriptProperties>
+      </Marker>
+      <Marker SerializationID="7" Name="patrolSystem" TemplateID="59584148284663864" TemplateName="secondaryScript" X="1348.838" Y="-4037.419">
+        <EntityProperties ParentEntitySetID="1" Description="" />
+        <LuaScriptProperties ScriptName="patrolSystem">
+          <Script>SCRIPT_NAME = "patrolSystem"
+
+--[[
+	usage:
+	EDX["patrolSystem"].registerHoldTime("waypoint", 0)
+	EDX["patrolSystem"].patrol("echelonOrGroup", "pathName", 0(circle) or 1(backendfront))
+--]]
+
+onEDXInitialized = function()
+	scripts.mission.waypoints.registerFunction("registerHoldTime")
+	scripts.mission.waypoints.registerFunction("patrol")
+	
+	data = EDX["dataManager"].GetOrCreate(SCRIPT_NAME)
+	if EDX["dataManager"].IsFirstRun() == true then
+		data["holdTimes"] = {}
+	end
+end
+
+registerHoldTime = function(waypoint, interval)
+	data["holdTimes"][waypoint] = interval
+end
+
+patrol = function(echelonOrGroup, pathName, pathTypeEnum)
+	local _pathType
+	if pathTypeEnum == 0 then
+		_pathType = "ECYCLIC"
+	elseif pathTypeEnum == 1 then
+		_pathType = "EBACKANDFORTH"
+	else
+		_pathType ="ESINGLE"
+	end
+	OFP:patrol(echelonOrGroup, pathName, _pathType, string.sub(pathName, 1, -2), "ADDTOFRONT")
+end
+
+function onArriveAtWaypoint(entity, waypoint)
+	if data["holdTimes"][waypoint] then
+		local echelon = OFP:getParentEchelon(entity)
+		local interval = data["holdTimes"][waypoint]
+		OFP:stopForTime(echelon, interval, "ADDTOFRONT")
+	end
+end
+</Script>
+        </LuaScriptProperties>
+      </Marker>
+      <Marker SerializationID="8" Name="chkpointManager" TemplateID="59584148284663864" TemplateName="secondaryScript" X="1550.432" Y="-2746.435">
+        <EntityProperties ParentEntitySetID="1" Description="" />
+        <LuaScriptProperties ScriptName="chkpointManager">
+          <Script>SCRIPT_NAME = "chkpointManager"
+
+onEDXInitialized = function()
+	data = EDX["dataManager"].GetOrCreate(SCRIPT_NAME)
+	if EDX["dataManager"].IsFirstRun() == true then
+		data["map"] = {}
+		data["ckpset"] = "ckpset"
+		data["ckzset"] = "ckzset"
+	end
+end
+
+onMissionStart = function()
+	OFP:activateEntitySet(data["ckpset"])
+end
+
+onSpawnedReady = function(setName, setID, tableOfEntities)
+	if setName == data["ckpset"] then
+		for _, ckp in pairs(tableOfEntities) do
+			data["map"][OFP:spawnEntitySetAtEntityPosition(data["ckzset"], ckp)] = ckp
+		end
+	elseif data["map"][setID] then
+		local ckp = data["map"][setID]
+		data["map"][tableOfEntities[1]] = {
+			["ckp"] = ckp,
+			["ckz"] = setID
+		}
+		OFP:startParticleSystem(ckp, 0)
+		data["map"][setID] = nil
+	end
+end
+
+onEnter = function(zone, unit)
+	if unit == EDX:getPrimaryPlayer() then
+		if data["map"][zone] then
+			OFP:destroyEntitySet(data["map"][zone]["ckz"]) --this will cause sence completed
+			OFP:stopParticleSystem(data["map"][zone]["ckp"])
+			data["map"][zone] = nil
+			
+			EDX["dataManager"].Save()
+			OFP:scriptedCheckpoint()
+		end
+	end
+end
+
+</Script>
+        </LuaScriptProperties>
+      </Marker>
+      <Marker SerializationID="9" Name="ckz" TemplateID="130252823392184388" TemplateName="triggerzone" X="1784.733" Y="-8205.17">
+        <EntityProperties ParentEntitySetID="1" Description="" />
+        <PolygonProperties Top="2000" Bottom="-1000" AltitudeMode="SeaLevel">
+          <Points>
+            <Point X="1786.8783" Y="-8205.17" />
+            <Point X="1786.591" Y="-8204.098" />
+            <Point X="1785.80591" Y="-8203.3125" />
+            <Point X="1784.7334" Y="-8203.025" />
+            <Point X="1783.66089" Y="-8203.3125" />
+            <Point X="1782.87585" Y="-8204.098" />
+            <Point X="1782.5885" Y="-8205.17" />
+            <Point X="1782.87585" Y="-8206.242" />
+            <Point X="1783.66089" Y="-8207.027" />
+            <Point X="1784.7334" Y="-8207.314" />
+            <Point X="1785.80591" Y="-8207.027" />
+            <Point X="1786.591" Y="-8206.242" />
+          </Points>
+        </PolygonProperties>
+      </Marker>
+      <Marker SerializationID="10" Name="ckp" TemplateID="63873590966642808" TemplateName="particlesystem" X="1816.098" Y="-8204.943">
+        <EntityProperties ParentEntitySetID="1" Description="" />
+        <ParticleSystemProperties EffectName="X_MISC_STROBE_Master1_Strobe" LoopCount="0" Playing="False" />
+        <TransformProperties GameMatrix="-1, 0, 8.742278E-08, 0, 0, 1, 0, 0, -8.742278E-08, 0, -1, 0, 1816.098, 0, -8204.943, 1" AltitudeMode="GroundLevel" />
+      </Marker>
+    </Markers>
+  </MarkerManager>
+</MissionEditor.Mission>

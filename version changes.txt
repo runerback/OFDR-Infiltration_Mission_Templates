@@ -1,0 +1,12 @@
+version 1.0.0.5
+	new features:
+		1. global data manage system
+		2. support checkpoint
+		3. patrol system
+		4. play alarm sound when player has been spotted.
+		5. when player has been suspected, suspector will raise doctrine up.
+	fixed bugs:
+		1. scenes disposed function fired when any entity set has been destroyed.
+		2. player's icon does not appeared on map.
+
+version 1.0.0.6
