@@ -1,18 +1,15 @@
 SCRIPT_NAME = "dataManager"
 
 onEDXInitialized = function()
-	--OFP:showPopup(SCRIPT_NAME, "initialized")
-	
 	scripts.mission.waypoints.registerFunction("IsFirstRun")
 	scripts.mission.waypoints.registerFunction("AddOrUpdate")
 	scripts.mission.waypoints.registerFunction("GetOrCreate")
 	scripts.mission.waypoints.registerFunction("Save")
 	
-	--OFP:showPopup("EDX.dataManager", tostring(EDX["dataManager"]))
 	if not data then
 		--table is a reference type
 		data = {}
-		data["_path"] = "./data_win/missions/kmp/cache"
+		data["_path"] = "./data_win/missions/kmp/cache" --change this to your exported mission folder and stored data file name.
 		data["_firstrun"] = true
 	else
 		load()
@@ -49,8 +46,6 @@ end
 
 Save = function()
 	EDX:saveTable(data, "data", data["_path"])
-	--OFP:showPopup("EDX:saveTable", "after")
-	--OFP:displaySystemMessage("data saved")
 end
 
 saveAfterReload = function()
