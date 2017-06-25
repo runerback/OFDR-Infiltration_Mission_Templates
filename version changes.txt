@@ -1,4 +1,4 @@
-version 1.0.0.5
+version 1.0.0.0
 	new features:
 		1. global data manage system
 		2. support checkpoint
@@ -9,4 +9,4 @@ version 1.0.0.5
 		1. scenes disposed function fired when any entity set has been destroyed.
 		2. player's icon does not appeared on map.
 
-version 1.0.0.6
+version 1.0.0.1
